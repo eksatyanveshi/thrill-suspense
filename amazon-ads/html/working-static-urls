@@ -1,0 +1,287 @@
+<!doctype html>
+
+
+    
+    
+    
+    <style>
+        /* Slideshow Container */
+        .slideshow-container {
+            max-width: 100%;
+            position: relative;
+            margin: auto;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        /* Slides */
+        .mySlides {
+            display: none;
+            text-align: center;
+        }
+
+        .mySlides a {
+            display: block;
+        }
+
+        .mySlides img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+            vertical-align: middle;
+        }
+
+        /* Next & previous buttons */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        /* Position the "next button" to the right */
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        /* On hover, add a black background color */
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        /* Caption text */
+        .text {
+            color: #f2f2f2;
+            font-size: 15px;
+            padding: 8px 12px;
+            position: absolute;
+            bottom: 8px;
+            width: 100%;
+            text-align: center;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        /* The dots/bullets/indicators */
+        .dots-container {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active, .dot:hover {
+            background-color: #717171;
+        }
+
+        /* Fading animation */
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        @keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
+
+        /* Responsive adjustments */
+        @media only screen and (max-width: 768px) {
+            .prev, .next {
+                padding: 12px;
+                font-size: 16px;
+            }
+            
+            .mySlides img {
+                max-height: 300px;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            .prev, .next {
+                padding: 8px;
+                font-size: 14px;
+            }
+            
+            .mySlides img {
+                max-height: 200px;
+            }
+        }
+    </style>
+
+
+    <div class="slideshow-container">
+        <!-- Slide 1 -->
+        <div class="mySlides fade">
+            <a href="https://www.amazon.in/s?k=ladies+traditional+fashion+offers+today&crid=1U0A8RDVXMDV7&sprefix=ladies+traditionalfashion+offers+today%2Caps%2C209&linkCode=ll2&tag=crimestoriescoin-21&linkId=4cdee1b1dc889f8b0bb62b656073f5d9&language=en_IN&ref_=as_li_ss_tl" target="_blank">
+                <img src="https://m.media-amazon.com/images/G/31/AmazonBazaar/ExternalJupiter25/P2B-ASSO-2148X588-300.jpg" alt="ladies traditional fashion offers" />
+            </a>
+            <div class="text">Ladies Traditional Fashion Offers</div>
+        </div>
+        <!-- Slide 1 -->
+        <div class="mySlides fade">
+            <a href="https://www.amazon.in/s?k=diwali+Jewellery&crid=1Y7G0HN56V8G8&sprefix=diwali+jewellery%2Caps%2C230&linkCode=ll2&tag=crimestoriescoin-21&linkId=b03f4a624cac18e63677396d3f30efbc&language=en_IN&ref_=as_li_ss_tl" target="_blank">
+                <img src="https://m.media-amazon.com/images/G/31/img21/Jewellery/2025/Jupiter/Associates/Phase_3/F_Festive_Favourites_Copy_1_1074x294.png" alt="Festive Offer on Jewellery" />
+            </a>
+            <div class="text">Festive Offer on Jewellery</div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="mySlides fade">
+            <a href="https://www.amazon.in/s?k=diwali+offer+on+home+appliances&crid=BZYSF310U31J&sprefix=diwali+offer+on+home+appliance%2Caps%2C198&linkCode=ll2&tag=crimestoriescoin-21&linkId=e17d2ef33fae6acf0e44bdd1ac386839&language=en_IN&ref_=as_li_ss_tl" target="_blank">
+                <img src="https://m.media-amazon.com/images/G/31/IMG15/Yousf/Jupiter_2025/Associates/Phase_3/LA_p3_associates_ptd.jpg" alt="Diwali Offer on Home Appliances" />
+            </a>
+            <div class="text">Diwali Offer on Home Appliances</div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="mySlides fade">
+            <a href="https://www.amazon.in/s?k=diwali+furniture+offers&crid=2IZ8FQ57XH65C&sprefix=diwali+furniturefers%2Caps%2C200&linkCode=ll2&tag=crimestoriescoin-21&linkId=5d259c7923c7a237b960331144b6d233&language=en_IN&ref_=as_li_ss_tl" target="_blank">
+                <img src="https://m.media-amazon.com/images/G/31/IMG20/Furniture/2025/jupiter25Associates/Furn_Associate_banner_Phase_2B_-_Sofas_recliners__more.jpg" alt="This Diwali offers on Furnitures" />
+            </a>
+            <div class="text">This Diwali offers on Furnitures</div>
+        </div>
+
+
+        <!-- Slide 4 -->
+        <div class="mySlides fade">
+            <a href="https://www.amazon.in/s?k=baby+skincare+products&crid=3459YW5UPF07U&sprefix=baby+skincare%2Caps%2C214&linkCode=ll2&tag=crimestoriescoin-21&linkId=012cd2ab14b9177fbf190e4560e8017c&language=en_IN&ref_=as_li_ss_tl" target="_blank">
+                <img src="https://m.media-amazon.com/images/G/31/img24/Consumables/Baby2025/Jupiter25/P3/Associates/Baby_ASSO_1074X294_02.png" alt="Various offers on Baby Skin Care Products" />
+            </a>
+            <div class="text">Various offers on Baby Skin Care Products</div>
+        </div>
+
+
+        <!-- Slide 5 -->
+        <div class="mySlides fade">
+            <a href="https://www.amazon.in/l/48365877031?pd_rd_w=Oq1Hs&content-id=amzn1.sym.0852504f-903d-4f52-b26a-7790154c4616%3Aamzn1.sym.0852504f-903d-4f52-b26a-7790154c4616&pf_rd_p=0852504f-903d-4f52-b26a-7790154c4616&pf_rd_r=KGFTR41AKR4G705K7P5K&pd_rd_wg=q3TNd&pd_rd_r=87a9dbcf-2d89-4910-b314-c508c08d08fa&qid=1760537741&linkCode=ll2&tag=crimestoriescoin-21&linkId=56524ca213f89eabd3c0bc4ee2a87421&language=en_IN&ref_=as_li_ss_tl" target="_blank">
+                <img src="https://m.media-amazon.com/images/G/31/INAssociates/2020/AC/Asso_Gen_Eng_LN_P2_B_SN_1074x294.jpeg" alt="Upto 70% off" />
+            </a>
+            <div class="text">Upto 70% off</div>
+        </div>
+
+
+        <!-- Slide 6 -->
+        <div class="mySlides fade">
+            <a href="https://www.amazon.in/events/greatindianfestival?_encoding=UTF8&pd_rd_w=XVn11&content-id=amzn1.sym.3ab5d697-09dd-4e4e-aac7-62dae9c26e28&pf_rd_p=3ab5d697-09dd-4e4e-aac7-62dae9c26e28&pf_rd_r=BBB70BYAR7WHG6YTDK74&pd_rd_wg=4VnRz&pd_rd_r=da40aa31-891d-4e04-b06d-51a1bd2b9edc&linkCode=sl2&tag=crimestoriescoin-21&linkId=cd83c0c909289034a3d4e31a1cb6b3f3&language=en_IN&ref_=as_li_ss_tl" target="_blank">
+                <img src="https://m.media-amazon.com/images/G/31/img23/Wireless/Priya/Jupiter/Brandstore/p2B/2B_Associates_2148x588_4.jpg" alt="Upto 40% off on Mobile Accessories" />
+            </a>
+            <div class="text">Upto 40% off on Mobile Accessories</div>
+        </div>
+
+
+        <!-- Slide 7 -->
+        <div class="mySlides fade">
+            <a href="https://www.amazon.in/s?k=offer+on+kids+fashion&crid=2ZCZITQ7MC7YW&sprefix=offer+on+kids+fashion%2Caps%2C244&linkCode=ll2&tag=crimestoriescoin-21&linkId=207648321739a4719ac98ed0d3cb9071&language=en_IN&ref_=as_li_ss_tl" target="_blank">
+                <img src="https://m.media-amazon.com/images/G/31/img2020/img21/kids/2025/Jup3/Associates/Overall_1074x294.png" alt="Amazon Great Indian Festival" />
+            </a>
+            <div class="text">50% to 60% off on Kids fashion</div>
+        </div>
+
+
+        <!-- Slide 8 -->
+        <div class="mySlides fade">
+            <a href="https://www.amazon.in/s?k=diwali+offer+on+TVs&crid=3S52WOO8X4XNX&sprefix=diwali+offer+on+tvs%2Caps%2C249&linkCode=ll2&tag=crimestoriescoin-21&linkId=4cc580853d247460f876599e1afc6f7d&language=en_IN&ref_=as_li_ss_tl" target="_blank">
+                <img src="https://m.media-amazon.com/images/G/31/singarde/Jupiter25_Associates_Oct_14/7_ASSO-2148X588_P2B2.jpg" alt="Diwali offer on TVs" />
+            </a>
+            <div class="text">Festive offer on TVs</div>
+        </div>
+        <!-- Next and previous buttons -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+
+    <!-- The dots/circles -->
+    <div class="dots-container">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+        <span class="dot" onclick="currentSlide(5)"></span>
+        <span class="dot" onclick="currentSlide(6)"></span>
+        <span class="dot" onclick="currentSlide(7)"></span>
+        <span class="dot" onclick="currentSlide(8)"></span>
+    </div>
+
+    <script>
+        let slideIndex = 1;
+        let slideInterval;
+
+        // Initialize the slideshow
+        showSlides(slideIndex);
+        startAutoSlide();
+
+        // Next/previous controls
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+            resetAutoSlide();
+        }
+
+        // Thumbnail image controls
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+            resetAutoSlide();
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " active";
+        }
+
+        // Auto slide functionality
+        function startAutoSlide() {
+            slideInterval = setInterval(function() {
+                plusSlides(1);
+            }, 5000); // Change slide every 5 seconds
+        }
+
+        function resetAutoSlide() {
+            clearInterval(slideInterval);
+            startAutoSlide();
+        }
+
+        // Pause slideshow on hover
+        const slideshowContainer = document.querySelector('.slideshow-container');
+        slideshowContainer.addEventListener('mouseenter', () => {
+            clearInterval(slideInterval);
+        });
+        
+        slideshowContainer.addEventListener('mouseleave', () => {
+            startAutoSlide();
+        });
+    </script>
+
+</!doctype>

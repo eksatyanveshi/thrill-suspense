@@ -1,0 +1,332 @@
+<!doctype html>
+
+
+    
+    
+    
+    <style>
+        /* Slideshow Container */
+        .slideshow-container {
+            max-width: 100%;
+            position: relative;
+            margin: auto;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            background-color: #f9f9f9;
+            min-height: 60px;
+        }
+
+        /* Loading state */
+        .slideshow-loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+            color: #666;
+            font-size: 16px;
+        }
+
+        /* Slides wrapper for sliding effect */
+        .slides-wrapper {
+            display: flex;
+            transition: transform 0.8s ease-in-out;
+            width: 100%;
+        }
+
+        .mySlides {
+            min-width: 100%;
+            text-align: center;
+            transition: opacity 0.3s ease;
+        }
+
+        .mySlides a {
+            display: block;
+        }
+
+        .mySlides img {
+            width: 100%;
+            max-height: 200px;
+            object-fit: contain;
+            vertical-align: middle;
+        }
+
+        /* Next & previous buttons */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 10;
+        }
+
+        /* Position the "next button" to the right */
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        /* On hover, add a black background color */
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        /* Caption text */
+        .text {
+            color: #f2f2f2;
+            font-size: 2vw;
+            padding: 8px 12px;
+            position: absolute;
+            bottom: 0px;
+            width: 100%;
+            text-align: center;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        /* The dots/bullets/indicators */
+        .dots-container {
+            text-align: center;
+            padding: 20px 0;
+            display: none;
+        }
+
+        .dot {
+            cursor: pointer;
+            height: 2vw;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active, .dot:hover {
+            background-color: #717171;
+        }
+
+        /* Error message */
+        .slideshow-error {
+            text-align: center;
+            padding: 20px;
+            color: #d32f2f;
+            background-color: #ffebee;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+
+        /* Responsive adjustments */
+        @media only screen and (max-width: 768px) {
+            .prev, .next {
+                padding: 12px;
+                font-size: 16px;
+            }
+            
+            .mySlides img {
+                max-height: 300px;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            .prev, .next {
+                padding: 8px;
+                font-size: 14px;
+            }
+            
+            .mySlides img {
+                max-height: 100px;
+            }
+        }
+    </style>
+
+
+    <div id="slideshow-container" class="slideshow-container">
+        <div class="slideshow-loading">Loading slideshow...</div>
+    </div>
+
+    <script>
+        // Configuration - Update this with your Google Drive JSON file URL
+        const JSON_URL = 'https://gist.githubusercontent.com/eksatyanveshi/76b8ef6623237a5b461dde4ee108f678/raw/9ae18d905581959300e413b6ee46cd4635a48b6d/slideshow.json';
+        // Diwali -- https://gist.githubusercontent.com/eksatyanveshi/76b8ef6623237a5b461dde4ee108f678/raw/52aba63dd54a6b7fb59955491b7f385372da5ca5/slideshow.json
+        // Alternative: If the above doesn't work, use a direct link
+        // const JSON_URL = 'https://your-direct-json-link.com/slideshow.json';
+
+        let slideIndex = 0;
+        let slideInterval;
+        let slidesData = [];
+        let slidesWrapper;
+
+        // Initialize the slideshow
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSlideshowData();
+        });
+
+        // Load slideshow data from JSON
+        async function loadSlideshowData() {
+            try {
+                const response = await fetch(JSON_URL);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                slidesData = await response.json();
+                
+                if (!Array.isArray(slidesData) || slidesData.length === 0) {
+                    throw new Error('Invalid JSON format or empty slides array');
+                }
+                
+                initializeSlideshow();
+            } catch (error) {
+                console.error('Error loading slideshow data:', error);
+                displayError('Failed to load slideshow. Please try again later.');
+            }
+        }
+
+        // Initialize the slideshow with loaded data
+        function initializeSlideshow() {
+            const container = document.getElementById('slideshow-container');
+            container.innerHTML = '';
+            
+            // Create slides wrapper for sliding effect
+            slidesWrapper = document.createElement('div');
+            slidesWrapper.className = 'slides-wrapper';
+            container.appendChild(slidesWrapper);
+            
+            // Create slides
+            slidesData.forEach((slide, index) => {
+                const slideElement = document.createElement('div');
+                slideElement.className = 'mySlides';
+                
+                const linkElement = document.createElement('a');
+                linkElement.href = slide.link;
+                linkElement.target = '_blank';
+                
+                const imgElement = document.createElement('img');
+                imgElement.src = slide.image;
+                imgElement.alt = slide.alt || `Slide ${index + 1}`;
+                
+                linkElement.appendChild(imgElement);
+                slideElement.appendChild(linkElement);
+                
+                /*if (slide.caption) {
+                    const captionElement = document.createElement('div');
+                    captionElement.className = 'text';
+                    captionElement.textContent = slide.caption;
+                    slideElement.appendChild(captionElement);
+                }*/
+                
+                slidesWrapper.appendChild(slideElement);
+            });
+            
+            // Create navigation buttons
+            const prevButton = document.createElement('a');
+            prevButton.className = 'prev';
+            prevButton.innerHTML = '&#10094;';
+            prevButton.onclick = () => plusSlides(-1);
+            
+            const nextButton = document.createElement('a');
+            nextButton.className = 'next';
+            nextButton.innerHTML = '&#10095;';
+            nextButton.onclick = () => plusSlides(1);
+            
+            container.appendChild(prevButton);
+            container.appendChild(nextButton);
+            
+            // Create dots container
+            const dotsContainer = document.createElement('div');
+            dotsContainer.className = 'dots-container';
+            
+            slidesData.forEach((_, index) => {
+                const dot = document.createElement('span');
+                dot.className = 'dot';
+                dot.onclick = () => currentSlide(index);
+                dotsContainer.appendChild(dot);
+            });
+            
+            // Insert dots container after slideshow
+            container.parentNode.insertBefore(dotsContainer, container.nextSibling);
+            
+            // Show first slide and start auto-slide
+            showSlides(slideIndex);
+            startAutoSlide();
+            
+            // Add hover pause functionality
+            container.addEventListener('mouseenter', () => {
+                clearInterval(slideInterval);
+            });
+            
+            container.addEventListener('mouseleave', () => {
+                startAutoSlide();
+            });
+        }
+
+        // Display error message
+        function displayError(message) {
+            const container = document.getElementById('slideshow-container');
+            container.innerHTML = `<div class="slideshow-error">${message}</div>`;
+        }
+
+        // Next/previous controls
+        function plusSlides(n) {
+            showSlides(slideIndex + n);
+            resetAutoSlide();
+        }
+
+        // Thumbnail image controls
+        function currentSlide(n) {
+            showSlides(n);
+            resetAutoSlide();
+        }
+
+        function showSlides(n) {
+            const slides = document.getElementsByClassName("mySlides");
+            const dots = document.getElementsByClassName("dot");
+            
+            if (slides.length === 0) return;
+            
+            // Handle wrap-around
+            if (n >= slides.length) { 
+                slideIndex = 0; 
+            } else if (n < 0) { 
+                slideIndex = slides.length - 1; 
+            } else {
+                slideIndex = n;
+            }
+            
+            // Update slide position using transform
+            slidesWrapper.style.transform = `translateX(-${slideIndex * 100}%)`;
+            
+            // Update dots
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            
+            if (dots.length > 0) {
+                dots[slideIndex].className += " active";
+            }
+        }
+
+        // Auto slide functionality
+        function startAutoSlide() {
+            slideInterval = setInterval(() => {
+                plusSlides(1);
+            }, 5000); // Change slide every 5 seconds
+        }
+
+        function resetAutoSlide() {
+            clearInterval(slideInterval);
+            startAutoSlide();
+        }
+    </script>
+
+</!doctype>
